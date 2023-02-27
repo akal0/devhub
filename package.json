@@ -9,32 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.8",
-    "@next-auth/mongodb-adapter": "^1.1.1",
-    "@next-auth/prisma-adapter": "^1.0.5",
     "@next/font": "13.1.6",
-    "@prisma/client": "^4.10.1",
     "@tailwindcss/line-clamp": "^0.4.2",
     "bcryptjs": "^2.4.3",
+    "emoji-mart": "^5.5.2",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
-    "formik": "^2.2.9",
+    "firebase": "^9.17.1",
     "framer-motion": "^9.0.2",
-    "mongodb": "^4.14.0",
+    "jsonwebtoken": "^9.0.0",
     "next": "13.1.6",
-    "next-auth": "^4.19.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
+    "recoil": "^0.7.6",
     "zustand": "^4.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
-    "prisma": "^4.10.1",
     "tailwindcss": "^3.2.6"
   }
 }

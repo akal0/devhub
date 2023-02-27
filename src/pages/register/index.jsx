@@ -2,13 +2,17 @@ import Head from "next/head";
 import Header from "@/components/Header/Header";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  AccountCircle,
-  AlternateEmail,
-  Fingerprint,
-  Router,
-} from "@mui/icons-material";
+
+import { MdAccountCircle, MdOutlineAlternateEmail, MdOutlineFingerprint } from "react-icons/md"
+
 import useNotifStore from "@/store/useNotifStore";
+
+// Firebase
+
+import { auth, db } from "@/firebase"
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import authHandler from "@/lib/handling/authHandler";
 
 const Register = () => {
   const [hide, setHide] = useState(false);
@@ -31,30 +35,56 @@ const Register = () => {
   };
 
   const register = async (e) => {
+
     e.preventDefault();
-    console.log(fields);
 
-    const response = await fetch("/api/auth/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: fields.username,
-        email: fields.email,
-        password: fields.password,
-        cPassword: fields.cPassword,
-      }),
-    });
+    if ( fields.username.length ) {
+      
+      if ( fields.email.length ) {
+        
+        if ( fields.password.length ) {
 
-    const result = await response.json();
+          if ( fields.password === fields.cPassword ) {
 
-    if (response.status !== 200) {
-      setNotif(result.message);
+            const docSnap = await getDoc(doc(db, "users", fields.username))
+
+            if (!docSnap.exists()) {
+              createUserWithEmailAndPassword(auth, fields.email, fields.password).then((cred) => {
+
+                setNotif(`${fields.username} has been successfully created!`)
+  
+                setDoc(doc(db, "users", fields.username), {
+                  username: fields.username,
+                  email: fields.email,
+                  role: "Learning developer"
+                })
+  
+                router.replace("/login")
+  
+              }).catch((error) => {
+                const message = authHandler(error.code)
+                setNotif(message);
+              })
+            } else {
+              setNotif("That user already exists!")
+            }
+
+          } else {
+            setNotif("Make sure your passwords match!")
+          }
+
+        } else {
+          setNotif("Please enter your password!")
+        }
+
+      } else {
+        setNotif("Please enter your email!")
+      }
+
     } else {
-      router.replace("/");
-      setNotif(result.message);
+      setNotif("Please enter a username!")
     }
+    
   };
 
   return (
@@ -84,7 +114,7 @@ const Register = () => {
               onChange={handleChange}
             />
 
-            <AccountCircle className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all" />
+            <MdAccountCircle className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all text-xl" />
           </div>
 
           <div className="flex items-center relative group">
@@ -97,7 +127,7 @@ const Register = () => {
               onChange={handleChange}
             />
 
-            <AlternateEmail className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all" />
+            <MdOutlineAlternateEmail className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all text-xl" />
           </div>
         </div>
 
@@ -112,8 +142,8 @@ const Register = () => {
               onChange={handleChange}
             />
 
-            <Fingerprint
-              className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all cursor-pointer"
+            <MdOutlineFingerprint
+              className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all cursor-pointer text-xl"
               onClick={() => setHide(!hide)}
             />
           </div>
@@ -128,9 +158,9 @@ const Register = () => {
               onChange={handleChange}
             />
 
-            <Fingerprint
-              className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all cursor-pointer"
-              onClick={() => setHide(!hide)}
+            <MdOutlineFingerprint
+              className="absolute right-6 text-white/[0.5] group-hover:text-white/[1] transition-all cursor-pointer text-xl"
+              onClick={() => setHide(!hide)}  
             />
           </div>
         </div>

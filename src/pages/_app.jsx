@@ -1,11 +1,10 @@
 import useNotifStore from "@/store/useNotifStore";
 import "@/styles/globals.css";
 import { useEffect } from "react";
-import { SessionProvider } from "next-auth/react";
 
 export default function App({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps
 }) {
   const { message, closeNotif } = useNotifStore();
 
@@ -18,7 +17,7 @@ export default function App({
   }, [message, closeNotif]);
 
   return (
-    <SessionProvider session={session}>
+    <>
       <Component {...pageProps} />
 
       {message && (
@@ -33,6 +32,6 @@ export default function App({
           </div>
         </div>
       )}
-    </SessionProvider>
+    </>
   );
 }

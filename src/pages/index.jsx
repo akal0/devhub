@@ -4,16 +4,20 @@ import Image from "next/image";
 
 import Link from "next/link";
 
-import {
-  BubbleChart,
-  Create,
-  DataObject,
-  Favorite,
-  Forum,
-  HeartBroken,
-  Share,
-  Work,
-} from "@mui/icons-material";
+// import {
+//   BubbleChart,
+//   Create,
+//   DataObject,
+//   Favorite,
+//   Forum,
+//   HeartBroken,
+//   Share,
+//   Work,
+// } from "@mui/icons-material";
+
+import { IoMdHeartDislike } from "react-icons/io"
+
+import { MdOutlineBubbleChart, MdOutlineCreate, MdCode, MdOutlineFavorite, MdWork, MdShare, MdOutlineForum } from "react-icons/md"
 
 const Landing = () => {
   return (
@@ -54,7 +58,7 @@ const Landing = () => {
               </div>
             </div>
             <div className="px-28">
-              <Image src="/landing.svg" width={600} height={600} />
+              <Image src="/landing.svg" width={600} height={600} alt="Landing Image" />
             </div>
           </div>
         </main>
@@ -102,6 +106,7 @@ const Landing = () => {
                     height={75}
                     width={75}
                     className="rounded-full px-2 py-2"
+                    alt="Profile pic"
                   />
                   <info className="flex flex-col gap-2">
                     <h1> cryptev </h1>
@@ -130,30 +135,30 @@ const Landing = () => {
 
               <footer className="px-12 flex flex-wrap gap-6 justify-between items-center mt-4">
                 <div className="flex gap-4 text-xs">
-                  <p className="flex gap-4 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group">
+                  <p className="flex gap-3 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group">
                     <span>
-                      <Favorite className="text-zinc-500 group-hover:text-[#6C63FF] transition-all" />
+                      <MdOutlineFavorite className="text-zinc-500 group-hover:text-[#6C63FF] transition-all text-sm" />
                     </span>
                     29 likes
                   </p>
 
                   <p className="flex gap-3 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group">
                     <span>
-                      <HeartBroken className="text-zinc-500 group-hover:text-red-500 transition-all" />
+                      <IoMdHeartDislike className="text-zinc-500 group-hover:text-red-500 transition-all text-sm" />
                     </span>
                     29 dislikes
                   </p>
 
-                  <p className="flex gap-3 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group">
+                  <p className="flex gap-3 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group ">
                     <span>
-                      <Forum className="text-zinc-500 group-hover:text-white transition-all" />
+                      <MdOutlineForum className="text-zinc-500 group-hover:text-white transition-all text-sm" />
                     </span>
                     29 comments
                   </p>
                 </div>
 
                 <p
-                  className="bg-zinc-700 px-4 py-2 rounded-sm cursor-pointer hover:bg-[#6C3CFF] transition-all
+                  className="bg-zinc-700 px-6 py-2 rounded-sm text-sm cursor-pointer hover:bg-[#6C3CFF] transition-all
                 "
                 >
                   Read more
@@ -202,6 +207,7 @@ const Landing = () => {
                     height={75}
                     width={75}
                     className="rounded-full px-2 py-2"
+                    alt="Profile pic"
                   />
                   <info className="flex flex-col gap-2">
                     <h1> Google </h1>
@@ -222,7 +228,6 @@ const Landing = () => {
                 <h1 className="text-xl">
                   Looking for a{" "}
                   <span className="text-[#716af7]">
-                    {" "}
                     Senior Front End Web Developer
                   </span>
                   ...
@@ -237,16 +242,16 @@ const Landing = () => {
 
               <footer className="px-12 flex flex-wrap gap-6 justify-between items-center mt-4">
                 <div className="flex gap-4">
-                  <p className="flex gap-4 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group text-xs">
+                  <p className="flex gap-3 items-center cursor-pointer hover:bg-zinc-700 transition-all px-4 py-2 rounded-sm group text-xs">
                     <span>
-                      <Create className="text-zinc-500 group-hover:text-[#6C63FF] transition-all" />
+                      <MdOutlineCreate className="text-zinc-500 group-hover:text-[#6C63FF] transition-all text-sm" />
                     </span>
                     46 applications
                   </p>
                 </div>
 
                 <p
-                  className="bg-zinc-700 px-6 py-2 rounded-sm cursor-pointer hover:bg-[#6C3CFF] transition-all
+                  className="bg-zinc-700 px-10 py-2 text-sm rounded-sm cursor-pointer hover:bg-[#6C3CFF] transition-all
                 "
                 >
                   Apply
@@ -274,28 +279,28 @@ const Landing = () => {
         <div className="space-y-8 w-[75%]">
           <h1 className="flex items-center gap-8">
             <span>
-              <Share className="text-2xl" />
+              <MdShare className="text-xl" />
             </span>
             Network with all types of developers, rookies and vets.
           </h1>
 
           <h1 className="flex items-center gap-8">
             <span>
-              <BubbleChart className="text-2xl" />
+              <MdOutlineBubbleChart className="text-xl" />
             </span>
             Share your thoughts everyday on your timeline!
           </h1>
 
           <h1 className="flex items-center gap-8">
             <span>
-              <DataObject className="text-2xl" />
+              <MdCode className="text-xl" />
             </span>
             Post your findings on different topics. It could help someone out!
           </h1>
 
           <h1 className="flex items-center gap-8">
             <span>
-              <Work className="text-2xl" />
+              <MdWork className="text-xl" />
             </span>
             Find a multitude of opportunities on our platform, getting you
             closer to your true potential!

@@ -1,13 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
-const NavLink = ({ Icon, text, destination, avatar }) => {
+const NavLink = ({ icon, text, destination }) => {
   return (
     <Link
       href={destination}
-      className="flex flex-col items-center space-y-2 text-sm hover:text-[#6C63FF] transition-all hover:border-b-2 hover:border-[#6C63FF] pb-2"
+      className="flex flex-col items-center justify-end space-y-2 text-sm hover:text-[#6C63FF] transition-all hover:border-b-2 hover:border-[#6C63FF] pb-2"
     >
-      {avatar ? <Icon className="!h-7 !w-7 flex" /> : <Icon />}
+      <div className="text-lg">
+      {icon}
+      </div>
       <p> {text} </p>
     </Link>
   );
