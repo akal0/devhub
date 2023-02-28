@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 
 import { MdAccountCircle, MdOutlineAlternateEmail, MdOutlineFingerprint } from "react-icons/md"
 
+import { uid } from "uid"
+
 import useNotifStore from "@/store/useNotifStore";
 
 // Firebase
@@ -46,17 +48,21 @@ const Register = () => {
 
           if ( fields.password === fields.cPassword ) {
 
-            const docSnap = await getDoc(doc(db, "users", fields.username))
+            let username = fields.username.toLowerCase();
+
+            const docSnap = await getDoc(doc(db, "users", username))
 
             if (!docSnap.exists()) {
+
               createUserWithEmailAndPassword(auth, fields.email, fields.password).then((cred) => {
 
-                setNotif(`${fields.username} has been successfully created!`)
+                setNotif(`${username} has been successfully created!`)
   
-                setDoc(doc(db, "users", fields.username), {
-                  username: fields.username,
+                setDoc(doc(db, "users", username), {
+                  id: uid(32),
+                  username,
                   email: fields.email,
-                  role: "Learning developer"
+                  role: "Learning Developer"
                 })
   
                 router.replace("/login")

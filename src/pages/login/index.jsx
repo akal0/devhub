@@ -3,19 +3,21 @@ import Header from "@/components/Header/Header";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import { MdAccountCircle, MdAlternateEmail, MdOutlineFingerprint } from "react-icons/md"
+import { MdAccountCircle, MdOutlineFingerprint } from "react-icons/md"
 
 import useNotifStore from "@/store/useNotifStore";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "@/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import authHandler from "@/lib/handling/authHandler";
+import useUserStore from "@/store/useUserStore";
 
 
 const Login = () => {
   const [hide, setHide] = useState(false);
 
   const { setNotif, message } = useNotifStore();
+  const { setUsername, username } = useUserStore();
 
   const router = useRouter();
 
@@ -44,6 +46,10 @@ const Login = () => {
           let email = docSnap.data().email;
           
           signInWithEmailAndPassword(auth, email, fields.password).then((cred) => {
+
+            updateProfile(auth.currentUser, {
+              displayName: fields.username
+            })
 
             setNotif(`Welcome back, ${fields.username}!`)
   

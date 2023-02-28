@@ -10,7 +10,7 @@ import Picker from '@emoji-mart/react'
 // Firebase 
 
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore'
-import { db, storage } from '@/firebase'
+import { auth, db, storage } from '@/firebase'
 import { getDownloadURL, ref, uploadString } from 'firebase/storage'
 
 const Input = () => {
@@ -28,10 +28,7 @@ const Input = () => {
         setLoading(true);
 
         const docRef = await addDoc(collection(db, 'posts'), {
-            // id: sessionStorage.user.uid,
-            // username: sessionStorage.user.username,
-            // userAvatar: session.user.avatar,
-            // role: session.user.role,
+            username: auth.currentUser.displayName,
             text: input,
             timestamp: serverTimestamp()
         })

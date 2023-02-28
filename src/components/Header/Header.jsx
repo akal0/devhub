@@ -1,8 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import NavLink from "./NavLink";
-
-import { MdWork, MdCode, MdStream, MdAccountCircle } from "react-icons/md"
 
 import Logo from "../logo/Logo";
 

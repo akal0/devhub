@@ -3,3 +3,8 @@ type notifStore = {
   setNotif: (message: string) => void;
   closeNotif: () => void;
 };
+
+type userStore = {
+  username: string;
+  setUsername: (message: string) => void;
+};
