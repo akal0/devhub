@@ -4,8 +4,14 @@ import useNotifStore from "@/store/useNotifStore";
 import Sidebar from "@/components/sidebar/Sidebar";
 import Stream from "@/components/stream/Stream";
 import { auth } from "@/firebase";
+import Modal from "@/components/modal/Modal";
+import { useRecoilState } from "recoil";
+import { modalState } from "@/atoms/modalAtom";
 
 const StreamPage = () => {
+
+  const [isOpen, setIsOpen] = useRecoilState(modalState);
+
   return (
     <div>
       <Head>
@@ -18,9 +24,8 @@ const StreamPage = () => {
 
           <Stream />
 
-          <div className="break-words max-w-lg">
-            Hello daflsodj;hbfuyisdfibasdadfijadujwefsdfdasfsasdasdasdasdasdasasdasdasdasdasdasd
-          </div>
+          {isOpen && <Modal />}
+
           
       </div>
 

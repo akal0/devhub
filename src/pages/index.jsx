@@ -31,8 +31,10 @@ const Landing = () => {
       <div className="flex flex-col gap-28 mx-32 pb-36">
         <main className="xl:h-[calc(100vh-22rem)] xl:max-w-screen-2xl xl:mx-auto xl:mt-40">
           <div className="flex flex-col justify-center px-16 gap-20 xl:flex-row xl:gap-28 items-center xl:divide-x-2 xl:divide-[#6C63FF]">
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-20">
+
               <div>
+
                 <h1 className="text-2xl xl:text-3xl font-bold capitalize text-[#6C63FF]">
                   The new hotspot for developers of all levels
                 </h1>
@@ -41,14 +43,10 @@ const Landing = () => {
                   which also provides you a place to network, blog your findings
                   and share your thoughts!
                 </p>
+
               </div>
 
               <div className="flex flex-col gap-4">
-                <p>
-                  By signing up to{" "}
-                  <span className="text-[#6C63FF]">devhub</span>, you agree to
-                  the terms and conditions.
-                </p>
                 <Link
                   href="/register"
                   className="py-3 bg-[#1e1e22] rounded-sm hover:bg-[#6C63FF] transition-all text-center"

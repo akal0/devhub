@@ -75,7 +75,7 @@ const Input = () => {
 
 
   return (
-    <div className={`border-b border-zinc-700/[0.5] px-10 py-8 flex space-x-3 overflow-y-scroll ${loading && "opacity-60"}`}>
+    <div className={`border-b border-zinc-700/[0.5] px-10 py-8 flex pr-24 space-x-3 overflow-hidden ${loading && "opacity-60"}`}>
         <div className="pt-2">
             <Image src="/guts.png" alt="avatar" height={48} width={48} className="rounded-full" />
         </div>
@@ -83,7 +83,7 @@ const Input = () => {
         <div className="w-full">
 
             <div className={`${selectedImage && "pb-8"} ${input && "space-y-2.5"} `}>
-                <textarea value={input} className=" w-full bg-[#1e1e22] rounded-sm resize-none outline-none pl-5 pt-3 tracking-wide border border-zinc-800/[0.6]" placeholder="Add some data to your stream to let people know what you're thinking about!" onChange={(e) => setInput(e.target.value)}>
+                <textarea value={input} className="h-32 w-full bg-[#1e1e22] rounded-sm resize-none outline-none pl-5 pt-3 tracking-wide border border-zinc-800/[0.6]" placeholder="Add some data to your stream to let people know what you're thinking about!" onChange={(e) => setInput(e.target.value)}>
 
                 </textarea>
             </div>

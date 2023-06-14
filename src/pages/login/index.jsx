@@ -10,14 +10,12 @@ import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "@/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import authHandler from "@/lib/handling/authHandler";
-import useUserStore from "@/store/useUserStore";
 
 
 const Login = () => {
   const [hide, setHide] = useState(false);
 
   const { setNotif, message } = useNotifStore();
-  const { setUsername, username } = useUserStore();
 
   const router = useRouter();
 

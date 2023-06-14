@@ -30,7 +30,7 @@ const Sidebar = () => {
         </div>
 
         <div className="space-y-2.5 mt-4 mb-2.5 xl:ml-24">
-          <SidebarLink icon={<MdStream />} text="Stream" destination="#" pathname={pathname}/>
+          <SidebarLink icon={<MdStream />} text="Stream" destination="/stream" pathname={pathname}/>
           <SidebarLink icon={<MdCode />} text="Articles" destination="#" pathname={pathname}/>
           <SidebarLink icon={<MdWork />} text="Opportunities" destination="#" pathname={pathname}/>
           <SidebarLink icon={<MdBookmark />} text="Saved" destination="#" pathname={pathname}/>
@@ -42,8 +42,9 @@ const Sidebar = () => {
           <SidebarLink icon={<MdAccountCircle />} text={username} destination="#" profile />
           <SidebarLink icon={<MdOutlineLogout />} text="Log out" destination="#" logout />
         </div>
+
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar;

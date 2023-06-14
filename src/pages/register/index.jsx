@@ -106,7 +106,7 @@ const Register = () => {
         onSubmit={register}
       >
         <h1 className="text-2xl mb-4">
-          Become a <span className="text-[#6C63FF]">developer</span>!
+          Become a <span className="text-[#6C63FF]">developer</span> today!
         </h1>
 
         <div className="flex flex-col gap-8 2xl:grid 2xl:grid-cols-2 w-[80%] 2xl:gap-12">
